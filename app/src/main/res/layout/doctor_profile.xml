@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+
+    android:layout_height="match_parent">
+
+
+<ImageView
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:background="@drawable/photo"
+    android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DOC12"
+        android:textSize="22sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Name"/>
+
+    <EditText
+        android:id="@+id/et_doctorName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:background="@drawable/editttext_roundedcorner"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Mail"/>
+
+    <EditText
+        android:id="@+id/et_doctorMail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Mail"
+        android:inputType="textEmailAddress"
+
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:background="@drawable/editttext_roundedcorner"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Mobile no"/>
+
+    <EditText
+        android:id="@+id/et_doctorMob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Mobile No"
+        android:inputType="number"
+        android:maxLength="10"
+
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:background="@drawable/editttext_roundedcorner"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Degree"/>
+
+    <EditText
+        android:id="@+id/et_doctorDegree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/editttext_roundedcorner"
+        android:hint="Doctors Degree"
+        android:padding="5dp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Address"/>
+    <EditText
+        android:id="@+id/et_doctorAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Address"
+
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:background="@drawable/editttext_roundedcorner"
+        />
+
+
+
+
+
+</LinearLayout>
