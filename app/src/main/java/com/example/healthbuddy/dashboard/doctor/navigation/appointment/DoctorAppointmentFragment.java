@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment;
 import com.example.healthbuddy.databinding.DoctorAppointmentFragmentBinding;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.Objects;
+
 public class DoctorAppointmentFragment extends Fragment {
 
     private DoctorAppointmentFragmentBinding binding;
@@ -27,7 +29,7 @@ public class DoctorAppointmentFragment extends Fragment {
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Requested"));
         binding.tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final AppointmentTabAdapter adapter = new AppointmentTabAdapter(getContext(),getActivity().getSupportFragmentManager(), binding.tabLayout.getTabCount());
+        final AppointmentTabAdapter adapter = new AppointmentTabAdapter(getContext(), requireActivity().getSupportFragmentManager(), binding.tabLayout.getTabCount());
         binding.viewPager.setAdapter(adapter);
 
         binding.viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(binding.tabLayout));

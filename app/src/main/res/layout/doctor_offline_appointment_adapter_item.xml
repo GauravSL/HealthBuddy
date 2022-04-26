@@ -3,19 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/text_tab_disabled">
+    android:layout_height="wrap_content"
+    android:background="#fafafa">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:elevation="10dp"
         app:cardCornerRadius="@dimen/card_radius"
-        android:layout_marginStart="@dimen/dp16"
-        android:layout_marginEnd="@dimen/dp16"
-        android:layout_marginBottom="@dimen/margin_normal"
-        android:layout_marginTop="@dimen/margin_normal"
         app:cardUseCompatPadding="true">
 
         <LinearLayout
@@ -25,69 +21,100 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/txtAppointmentId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="APP78521"
+                android:textColor="@color/teal_200"
+                android:textSize="@dimen/sp16"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/icon_username"
+                app:drawableTint="@color/teal_200" />
+
+            <TextView
                 android:id="@+id/txtPatientName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Gaurav Lakade"
-                android:textSize="@dimen/sp18"
-                android:textStyle="bold"/>
+                android:textColor="@color/PrimaryDarkColor"
+                android:textSize="@dimen/sp16"
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Contact :- "
-                    android:textSize="@dimen/sp16"
-                    android:textStyle="bold"
-                    android:textColor="@color/alphabet_text_color"/>
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp14"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/txtPatientContact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="9857845235"
-                    android:textSize="@dimen/sp16" />
+                    android:textSize="@dimen/sp14" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date :- "
-                android:textSize="@dimen/sp16"
-                android:textStyle="bold"
-                android:textColor="@color/alphabet_text_color"/>
-                <TextView
-                    android:id="@+id/txtPatientSlotDate"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Monday 24, 2022"
-                    android:textSize="@dimen/sp16" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date :- "
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp14"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtPatientSlotDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Monday 24, 2022"
+                        android:textSize="@dimen/sp14" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp10"
+                        android:text="Time :- "
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp14"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtPatientSlotTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11:30AM"
+                        android:textSize="@dimen/sp14" />
+                </LinearLayout>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Time :- "
-                    android:textSize="@dimen/sp16"
-                    android:textStyle="bold"
-                    android:textColor="@color/alphabet_text_color"/>
-                <TextView
-                    android:id="@+id/txtPatientSlotTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="11:30AM - 12:30PM"
-                    android:textSize="@dimen/sp16" />
-            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,15 +124,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Hospital :- "
-                    android:textSize="@dimen/sp16"
+                    android:textSize="@dimen/sp14"
                     android:textStyle="bold"
-                    android:textColor="@color/alphabet_text_color"/>
+                    android:textColor="@color/black"/>
                 <TextView
                     android:id="@+id/txtPatientHospitalToVisit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="RIMMS"
-                    android:textSize="@dimen/sp16" />
+                    android:textSize="@dimen/sp14" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -116,15 +143,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Address :- "
-                    android:textSize="@dimen/sp16"
+                    android:textSize="@dimen/sp14"
                     android:textStyle="bold"
-                    android:textColor="@color/alphabet_text_color"/>
+                    android:textColor="@color/black"/>
                 <TextView
                     android:id="@+id/txtPatientHospitalAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Nawathe Square, Rajapeth, Amravati - 444605"
-                    android:textSize="@dimen/sp16" />
+                    android:textSize="@dimen/sp14" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
