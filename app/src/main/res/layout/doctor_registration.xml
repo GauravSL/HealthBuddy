@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:text="Doctor Registration"
+        android:gravity="center"/>
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp"
+    android:text="Enter Name"/>
+    <EditText
+        android:id="@+id/et_docname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/doctor_editttext_roundedcorner"
+        android:textSize="22sp"
+        android:hint="Enter Name"
+        android:padding="5dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Enter Mail"/>
+    <EditText
+        android:id="@+id/et_docmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/doctor_editttext_roundedcorner"
+        android:textSize="22sp"
+        android:hint="Enter Mail"
+        android:inputType="textEmailAddress"
+        android:padding="5dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Enter Number"/>
+    <EditText
+        android:id="@+id/et_docnumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/doctor_editttext_roundedcorner"
+        android:textSize="22sp"
+        android:hint="Mobile Number"
+        android:inputType="number"
+        android:maxLength="10"
+        android:padding="5dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Degree"/>
+    <EditText
+        android:id="@+id/docdegree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/doctor_editttext_roundedcorner"
+        android:textSize="22sp"
+        android:hint="Enter Your Degree"
+        android:padding="5dp"
+        />
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    android:text="Enter Address"/>
+    <EditText
+        android:id="@+id/et_docAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/doctor_editttext_roundedcorner"
+        android:textSize="22sp"
+        android:hint="Address"
+        android:padding="5dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/donate_button"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/doctor_roundedcorner_button"
+        android:layout_gravity="center"/>
+</LinearLayout>

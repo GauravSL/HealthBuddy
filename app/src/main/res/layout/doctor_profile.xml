@@ -38,7 +38,7 @@
 
         android:textSize="20sp"
         android:padding="5dp"
-        android:background="@drawable/editttext_roundedcorner"
+        android:background="@drawable/doctor_editttext_roundedcorner"
         />
 
     <TextView
@@ -56,7 +56,7 @@
 
         android:textSize="20sp"
         android:padding="5dp"
-        android:background="@drawable/editttext_roundedcorner"
+        android:background="@drawable/doctor_editttext_roundedcorner"
         />
 
     <TextView
@@ -75,7 +75,7 @@
 
         android:textSize="20sp"
         android:padding="5dp"
-        android:background="@drawable/editttext_roundedcorner"
+        android:background="@drawable/doctor_editttext_roundedcorner"
         />
     <TextView
         android:layout_width="match_parent"
@@ -88,7 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:background="@drawable/editttext_roundedcorner"
+        android:background="@drawable/doctor_editttext_roundedcorner"
         android:hint="Doctors Degree"
         android:padding="5dp"
         android:textSize="20sp" />
@@ -106,7 +106,7 @@
 
         android:textSize="20sp"
         android:padding="5dp"
-        android:background="@drawable/editttext_roundedcorner"
+        android:background="@drawable/doctor_editttext_roundedcorner"
         />
 
 
