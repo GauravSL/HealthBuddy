@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/user_registration_bg1"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/dp10">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/photo"
+        android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="User#"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Name"/>
+
+    <EditText
+        android:id="@+id/et_user_Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:editable="false"
+        android:inputType="none"
+        android:focusable="false"
+        android:maxLines="2"
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:background="@drawable/user_edittext_roundedcorner"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Mail"/>
+
+    <EditText
+        android:id="@+id/et_user_Mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Mail"
+        android:inputType="textEmailAddress"
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:background="@drawable/user_edittext_roundedcorner"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Mobile no"/>
+
+    <EditText
+        android:id="@+id/et_user_Mob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Mobile No"
+        android:inputType="number"
+        android:maxLength="10"
+
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:background="@drawable/user_edittext_roundedcorner"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="DOB"/>
+
+    <EditText
+        android:id="@+id/et_userDOB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/user_edittext_roundedcorner"
+        android:hint="DOB"
+        android:padding="5dp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Address"/>
+    <EditText
+        android:id="@+id/et_userAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Address"
+
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:background="@drawable/user_edittext_roundedcorner"
+        />
+    </LinearLayout>
+</LinearLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.healthbuddy" >
+    package="com.example.healthbuddy">
 
     <application
         android:allowBackup="true"
@@ -8,15 +8,25 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.HealthBuddy.NoActionBar" >
+        android:theme="@style/Theme.HealthBuddy.NoActionBar">
+        <activity
+            android:name=".patient.dashboard.UserDashboardActivity"
+            android:exported="false"
+            android:label="@string/title_activity_user_dashboard"
+            android:theme="@style/Theme.HealthBuddy.NoActionBar.NoActionBar" />
+        <activity
+            android:name=".patient.MedicineListActivity"
+            android:exported="false" />
         <activity
             android:name=".dashboard.doctor.DashboardDoctor"
             android:exported="false"
             android:label="@string/title_activity_dashboard_doctor" />
-
+        <activity
+            android:name=".registration.user.UserRegistrationActivity"
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

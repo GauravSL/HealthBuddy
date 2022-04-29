@@ -118,6 +118,7 @@
         android:layout_marginTop="10dp">
 
         <RadioButton
+            android:id="@+id/rb_doctor_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Doctor"
@@ -125,6 +126,7 @@
             android:layout_weight="1"
             android:textStyle="italic"/>
         <RadioButton
+            android:id="@+id/rb_patient_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Patient"
@@ -132,6 +134,7 @@
             android:layout_weight="1"
             android:textStyle="italic"/>
         <RadioButton
+            android:id="@+id/rb_admin_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Admin"

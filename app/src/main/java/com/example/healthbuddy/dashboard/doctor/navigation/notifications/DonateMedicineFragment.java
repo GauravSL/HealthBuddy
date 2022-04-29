@@ -11,18 +11,19 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.healthbuddy.databinding.DoctorRegistrationBinding;
 import com.example.healthbuddy.databinding.DoctorRequestedAppointmentAdapterItemBinding;
+import com.example.healthbuddy.databinding.DonateMedicineBinding;
 
 
 public class DonateMedicineFragment extends Fragment {
 
-    private DoctorRegistrationBinding binding;
+    private DonateMedicineBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         NotificationsViewModel notificationsViewModel =
                 new ViewModelProvider(this).get(NotificationsViewModel.class);
 
-        binding = DoctorRegistrationBinding.inflate(inflater, container, false);
+        binding = DonateMedicineBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         /*final TextView textView = binding.textNotifications;

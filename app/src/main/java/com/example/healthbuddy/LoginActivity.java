@@ -10,10 +10,14 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.healthbuddy.dashboard.doctor.DashboardDoctor;
+import com.example.healthbuddy.patient.MedicineListActivity;
+import com.example.healthbuddy.patient.dashboard.UserDashboardActivity;
+import com.example.healthbuddy.registration.user.UserRegistrationActivity;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -25,6 +29,9 @@ public class LoginActivity extends AppCompatActivity {
     TextView txt_username_error;
     TextView txt_forgot_password,txt_login_again;
     CardView cv_login, cv_forgotPassword;
+    RadioButton rb_Doctor, rb_User, rb_Admin;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         Animation slideOutRight = AnimationUtils.loadAnimation(this, R.anim.anim_slide_out_right);
 
         btn_Login.setOnClickListener(view -> {
-           /* if (etUserName.getText().toString().equalsIgnoreCase("")) {
+            if (etUserName.getText().toString().equalsIgnoreCase("")) {
                 txt_username_error.setVisibility(View.VISIBLE);
                 txt_username_error.setText("Please enter username");
             } else if (etPassword.getText().toString().equalsIgnoreCase("")) {
@@ -49,11 +56,23 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, DashboardDoctor.class);
                 startActivity(intent);
             }else{
-                Toast.makeText(LoginActivity.this, "Invalid Login Credentials", Toast.LENGTH_SHORT).show();
-            }*/
+                Intent intent = null;
+                if(rb_Doctor.isChecked()){
+                    intent = new Intent(LoginActivity.this, DashboardDoctor.class);
+                }else if(rb_User.isChecked()){
+                    intent = new Intent(LoginActivity.this, UserDashboardActivity.class);
+                }else if(rb_Admin.isChecked()){
+                    intent = new Intent(LoginActivity.this, MainActivity.class);
+                }else {
+                    Toast.makeText(LoginActivity.this,"Plese Select Valid Profile",Toast.LENGTH_SHORT).show();
+                }
 
-            Intent intent = new Intent(LoginActivity.this, DashboardDoctor.class);
-            startActivity(intent);
+                startActivity(intent);
+                //Toast.makeText(LoginActivity.this, "Invalid Login Credentials", Toast.LENGTH_SHORT).show();
+            }
+
+           // Intent intent = new Intent(LoginActivity.this, UserRegistrationActivity.class);
+          //  startActivity(intent);
         });
 
         txt_forgot_password.setOnClickListener(view -> {
@@ -62,6 +81,9 @@ public class LoginActivity extends AppCompatActivity {
         txt_login_again.setOnClickListener(view -> {
             cv_forgotPassword.startAnimation(slideOutRight);
         });
+
+
+
 
         slideOutLeft.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -112,5 +134,8 @@ public class LoginActivity extends AppCompatActivity {
         cv_login = findViewById(R.id.cv_login);
         cv_forgotPassword = findViewById(R.id.cv_forgotPassword);
         txt_login_again = findViewById(R.id.txt_login_again);
+        rb_Doctor = findViewById(R.id.rb_doctor_rb);
+        rb_User = findViewById(R.id.rb_patient_rb);
+        rb_Admin = findViewById(R.id.rb_admin_rb);
     }
 }

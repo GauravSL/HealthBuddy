@@ -17,4 +17,9 @@
     <string name="title_donate_med">Donate Medicine</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_user_dashboard">UserDashboardActivity</string>
+    <string name="title_user_my_app">My Appointments</string>
+    <string name="title_user_profile">My Profile</string>
+    <string name="title_user_order_med">Order Medicine</string>
+    <string name="title_user_home">Home</string>
 </resources>
