@@ -11,22 +11,22 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.healthbuddy.databinding.FragmentHomeBinding;
+import com.example.healthbuddy.databinding.UserHomeDashboardBinding;
 
 
 public class HomeFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private UserHomeDashboardBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = UserHomeDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
         return root;
     }
 
