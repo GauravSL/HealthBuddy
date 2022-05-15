@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/nav_user_app"
-        android:name="com.example.healthbuddy.patient.dashboard.ui.appointment.AppointmentFragment"
+        android:name="com.example.healthbuddy.patient.dashboard.ui.appointment.adapter.AppointmentFragment"
         android:label="@string/title_user_my_app"
         tools:layout="@layout/fragment_gallery" />
 
