@@ -3,7 +3,9 @@ package com.example.healthbuddy;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -15,14 +17,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.healthbuddy.dashboard.doctor.DashboardDoctor;
-import com.example.healthbuddy.patient.MedicineListActivity;
 import com.example.healthbuddy.patient.dashboard.UserDashboardActivity;
+import com.example.healthbuddy.registration.doctor.DoctorRegistrationActivity;
 import com.example.healthbuddy.registration.user.UserRegistrationActivity;
+import com.example.healthbuddy.webservices.Response;
+import com.example.healthbuddy.webservices.ServerDataTransfer;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button btn_Login;
+    Button btn_Login, btn_register;
     EditText etUserName;
     EditText etPassword;
     TextView txt_password_error;
@@ -58,21 +67,46 @@ public class LoginActivity extends AppCompatActivity {
             }else{
                 Intent intent = null;
                 if(rb_Doctor.isChecked()){
-                    intent = new Intent(LoginActivity.this, DashboardDoctor.class);
+                 //   intent = new Intent(LoginActivity.this, DashboardDoctor.class);
+                    callService(etUserName.getText().toString(), etPassword.getText().toString(), "doctor");
                 }else if(rb_User.isChecked()){
-                    intent = new Intent(LoginActivity.this, UserDashboardActivity.class);
+                   // intent = new Intent(LoginActivity.this, UserDashboardActivity.class);
+                    callService(etUserName.getText().toString(), etPassword.getText().toString(), "user");
+
                 }else if(rb_Admin.isChecked()){
-                    intent = new Intent(LoginActivity.this, MainActivity.class);
+                    //intent = new Intent(LoginActivity.this, MainActivity.class);
+                    callService(etUserName.getText().toString(), etPassword.getText().toString(), "admin");
+
                 }else {
                     Toast.makeText(LoginActivity.this,"Plese Select Valid Profile",Toast.LENGTH_SHORT).show();
                 }
 
-                startActivity(intent);
+                //startActivity(intent);
+
+
                 //Toast.makeText(LoginActivity.this, "Invalid Login Credentials", Toast.LENGTH_SHORT).show();
             }
 
            // Intent intent = new Intent(LoginActivity.this, UserRegistrationActivity.class);
           //  startActivity(intent);
+        });
+
+        btn_register.setOnClickListener(view -> {
+
+                Intent intent = null;
+                if(rb_Doctor.isChecked()){
+                    intent = new Intent(LoginActivity.this, DoctorRegistrationActivity.class);
+                }else if(rb_User.isChecked()){
+                    intent = new Intent(LoginActivity.this, UserRegistrationActivity.class);
+                }else if(rb_Admin.isChecked()){
+                    Toast.makeText(LoginActivity.this,"You can not register as Admin",Toast.LENGTH_SHORT).show();
+                return;
+                }else {
+                    Toast.makeText(LoginActivity.this,"Please Select Valid Profile",Toast.LENGTH_SHORT).show();
+                     return;
+                }
+                startActivity(intent);
+
         });
 
         txt_forgot_password.setOnClickListener(view -> {
@@ -126,6 +160,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void initView(){
         btn_Login = findViewById(R.id.btn_Login);
+        btn_register = findViewById(R.id.btn_register);
         etUserName = findViewById(R.id.user_name);
         etPassword = findViewById(R.id.password);
         txt_password_error = findViewById(R.id.txt_password_error);
@@ -137,5 +172,43 @@ public class LoginActivity extends AppCompatActivity {
         rb_Doctor = findViewById(R.id.rb_doctor_rb);
         rb_User = findViewById(R.id.rb_patient_rb);
         rb_Admin = findViewById(R.id.rb_admin_rb);
+    }
+
+    AsyncTask<Void, Void, Response> asyncTask;
+    private void callService(String username, String password, String role){
+         asyncTask = new AsyncTask<Void, Void, Response>() {
+            @SuppressLint("StaticFieldLeak")
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected Response doInBackground(Void... strings) {
+                ServerDataTransfer dataTransfer = new ServerDataTransfer();
+                Response response = null;
+                try {
+                    /*  apiDATA.put(Constants.AUTHORIZATION, "");*/
+                    // String categoryId = impactedCategory.getCategoryId();
+                    JSONObject obj = new JSONObject();
+                    obj.put("username", username);
+                    obj.put("password", password);
+                    obj.put("role", role);
+                    response = dataTransfer.accessAPI("","",obj.toString());
+
+
+                } catch (IOException | JSONException exception) {
+                    exception.printStackTrace();
+                }
+
+                return response;
+            }
+
+            @Override
+            protected void onPostExecute(Response response) {
+                super.onPostExecute(response);
+            }
+        };
+        asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 }
