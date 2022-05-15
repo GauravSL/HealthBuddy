@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/ic_bg_bottom">
+    android:background="@drawable/ic_bg_bottom"
+    android:id="@+id/main_container">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -15,14 +16,15 @@
         android:layout_margin="@dimen/dp10">
 
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_profile"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/photo"
             android:layout_gravity="center"
-
             app:shapeAppearanceOverlay="@style/roundedImageViewRounded"/>
 
     <TextView
+        android:id="@+id/tv_doctorId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -139,6 +141,71 @@
         android:padding="5dp"
         android:textSize="20sp"
         android:maxLines="3"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/password_container"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:text="   Password"
+                android:textSize="@dimen/sp14"
+                android:textStyle="italic"
+                app:drawableStartCompat="@drawable/password_icon"
+                app:drawableTint="@color/teal_200" />
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/doctor_editttext_roundedcorner"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:maxLines="3"
+                android:inputType="textPassword"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:text="   Confirm Password"
+                android:textSize="@dimen/sp14"
+                android:textStyle="italic"
+                app:drawableStartCompat="@drawable/password_icon"
+                app:drawableTint="@color/teal_200" />
+
+            <EditText
+                android:id="@+id/et_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/doctor_editttext_roundedcorner"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:maxLines="3"
+                android:inputType="textPassword"/>
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/doctor_roundedcorner_button"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Submit"
+            android:textColor="@color/white"
+            android:textStyle="bold|italic"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginBottom="@dimen/dp20"
+            />
 
     </LinearLayout>
     </ScrollView>
