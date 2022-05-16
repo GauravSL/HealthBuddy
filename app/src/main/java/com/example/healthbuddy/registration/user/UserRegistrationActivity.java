@@ -24,6 +24,13 @@ public class UserRegistrationActivity extends AppCompatActivity {
     private ShapeableImageView img_profile;
     private TextView tv_userId;
 
+    String name = "",
+    password = "",
+     mail = "",
+     mNumber = "",
+     dob = "",
+     address = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +59,13 @@ public class UserRegistrationActivity extends AppCompatActivity {
                 new DatePickerDialog(UserRegistrationActivity.this,date,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+
+        name = editText.getText().toString();
+        password = editText.getText().toString();
+        mail = editText.getText().toString();
+        mNumber = editText.getText().toString();
+        dob = editText.getText().toString();
+        address = editText.getText().toString();
     }
 
     private void updateLabel(){

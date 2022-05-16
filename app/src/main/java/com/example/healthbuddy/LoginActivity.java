@@ -67,21 +67,21 @@ public class LoginActivity extends AppCompatActivity {
             }else{
                 Intent intent = null;
                 if(rb_Doctor.isChecked()){
-                 //   intent = new Intent(LoginActivity.this, DashboardDoctor.class);
-                    callService(etUserName.getText().toString(), etPassword.getText().toString(), "doctor");
+                    intent = new Intent(LoginActivity.this, DashboardDoctor.class);
+                    //callService(etUserName.getText().toString(), etPassword.getText().toString(), "doctor");
                 }else if(rb_User.isChecked()){
-                   // intent = new Intent(LoginActivity.this, UserDashboardActivity.class);
-                    callService(etUserName.getText().toString(), etPassword.getText().toString(), "user");
+                    intent = new Intent(LoginActivity.this, UserDashboardActivity.class);
+                    //callService(etUserName.getText().toString(), etPassword.getText().toString(), "user");
 
                 }else if(rb_Admin.isChecked()){
-                    //intent = new Intent(LoginActivity.this, MainActivity.class);
-                    callService(etUserName.getText().toString(), etPassword.getText().toString(), "admin");
+                    intent = new Intent(LoginActivity.this, MainActivity.class);
+                    //callService(etUserName.getText().toString(), etPassword.getText().toString(), "admin");
 
                 }else {
                     Toast.makeText(LoginActivity.this,"Plese Select Valid Profile",Toast.LENGTH_SHORT).show();
                 }
 
-                //startActivity(intent);
+                startActivity(intent);
 
 
                 //Toast.makeText(LoginActivity.this, "Invalid Login Credentials", Toast.LENGTH_SHORT).show();
