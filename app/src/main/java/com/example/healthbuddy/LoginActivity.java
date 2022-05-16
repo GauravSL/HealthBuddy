@@ -68,14 +68,14 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = null;
                 if(rb_Doctor.isChecked()){
                  //   intent = new Intent(LoginActivity.this, DashboardDoctor.class);
-                    callService(etUserName.getText().toString(), etPassword.getText().toString(), "doctor");
+                    callLoginService(etUserName.getText().toString(), etPassword.getText().toString(), "doctor");
                 }else if(rb_User.isChecked()){
                    // intent = new Intent(LoginActivity.this, UserDashboardActivity.class);
-                    callService(etUserName.getText().toString(), etPassword.getText().toString(), "user");
+                    callLoginService(etUserName.getText().toString(), etPassword.getText().toString(), "user");
 
                 }else if(rb_Admin.isChecked()){
                     //intent = new Intent(LoginActivity.this, MainActivity.class);
-                    callService(etUserName.getText().toString(), etPassword.getText().toString(), "admin");
+                    callLoginService(etUserName.getText().toString(), etPassword.getText().toString(), "admin");
 
                 }else {
                     Toast.makeText(LoginActivity.this,"Plese Select Valid Profile",Toast.LENGTH_SHORT).show();
@@ -175,7 +175,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     AsyncTask<Void, Void, Response> asyncTask;
-    private void callService(String username, String password, String role){
+    private void callLoginService(String username, String password, String role){
          asyncTask = new AsyncTask<Void, Void, Response>() {
             @SuppressLint("StaticFieldLeak")
             @Override
