@@ -67,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
             }else{
                 Intent intent = null;
                 if(rb_Doctor.isChecked()){
+<<<<<<< HEAD
                  //   intent = new Intent(LoginActivity.this, DashboardDoctor.class);
                     callLoginService(etUserName.getText().toString(), etPassword.getText().toString(), "doctor");
                 }else if(rb_User.isChecked()){
@@ -76,12 +77,23 @@ public class LoginActivity extends AppCompatActivity {
                 }else if(rb_Admin.isChecked()){
                     //intent = new Intent(LoginActivity.this, MainActivity.class);
                     callLoginService(etUserName.getText().toString(), etPassword.getText().toString(), "admin");
+=======
+                    intent = new Intent(LoginActivity.this, DashboardDoctor.class);
+                    //callService(etUserName.getText().toString(), etPassword.getText().toString(), "doctor");
+                }else if(rb_User.isChecked()){
+                    intent = new Intent(LoginActivity.this, UserDashboardActivity.class);
+                    //callService(etUserName.getText().toString(), etPassword.getText().toString(), "user");
+
+                }else if(rb_Admin.isChecked()){
+                    intent = new Intent(LoginActivity.this, MainActivity.class);
+                    //callService(etUserName.getText().toString(), etPassword.getText().toString(), "admin");
+>>>>>>> 2176578f05b3d889bed136242c72f93d25726944
 
                 }else {
                     Toast.makeText(LoginActivity.this,"Plese Select Valid Profile",Toast.LENGTH_SHORT).show();
                 }
 
-                //startActivity(intent);
+                startActivity(intent);
 
 
                 //Toast.makeText(LoginActivity.this, "Invalid Login Credentials", Toast.LENGTH_SHORT).show();
