@@ -1,6 +1,7 @@
 package com.example.healthbuddy.dashboard.doctor.navigation.appointment.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.healthbuddy.R;
+import com.example.healthbuddy.dashboard.doctor.navigation.appointment.SelectedAppointmentActivity;
 
 import java.util.List;
 
@@ -35,6 +37,10 @@ public class DoctorOnlineAppointmentListAdapter extends RecyclerView.Adapter<Doc
     public void onBindViewHolder(@NonNull DoctorOnlineAppointmentListAdapter.ViewHolder holder, int position) {
         String patientName = appointmentData.get(position);
         holder.patientName.setText(patientName);
+        holder.itemView.setOnClickListener(view ->{
+            Intent intent = new Intent(context, SelectedAppointmentActivity.class);
+            context.startActivity(intent);
+                });
     }
 
     @Override
@@ -49,6 +55,7 @@ public class DoctorOnlineAppointmentListAdapter extends RecyclerView.Adapter<Doc
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             patientName = itemView.findViewById(R.id.txtPatientName);
+
         }
     }
 }
