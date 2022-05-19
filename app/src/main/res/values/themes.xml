@@ -36,4 +36,10 @@
     <style name="Theme.HealthBuddy.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.HealthBuddy.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.HealthBuddy.TealColor">
+        <item name="colorAccent">@color/teal_200</item> <!-- Whatever color you want-->
+    </style>
+    <style name="Theme.HealthBuddy.BlueColor">
+        <item name="colorAccent">@color/blue</item> <!-- Whatever color you want-->
+    </style>
 </resources>

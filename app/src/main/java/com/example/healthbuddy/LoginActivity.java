@@ -12,6 +12,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView txt_forgot_password,txt_login_again;
     CardView cv_login, cv_forgotPassword;
     RadioButton rb_Doctor, rb_User, rb_Admin;
+    ProgressBar progressDialog;
 
 
 
@@ -67,30 +69,20 @@ public class LoginActivity extends AppCompatActivity {
             }else{
                 Intent intent = null;
                 if(rb_Doctor.isChecked()){
-                    intent = new Intent(LoginActivity.this, DashboardDoctor.class);
-                  //  callLoginService(etUserName.getText().toString(), etPassword.getText().toString(), "doctor");
+                  //  intent = new Intent(LoginActivity.this, DashboardDoctor.class);
+                    callLoginService(etUserName.getText().toString(), etPassword.getText().toString(), "doctor");
                 }else if(rb_User.isChecked()){
-                    intent = new Intent(LoginActivity.this, UserDashboardActivity.class);
-                   // callLoginService(etUserName.getText().toString(), etPassword.getText().toString(), "user");
+                  //  intent = new Intent(LoginActivity.this, UserDashboardActivity.class);
+                    callLoginService(etUserName.getText().toString(), etPassword.getText().toString(), "user");
 
                 }else if(rb_Admin.isChecked()){
-                    intent = new Intent(LoginActivity.this, MainActivity.class);
-                  //  callLoginService(etUserName.getText().toString(), etPassword.getText().toString(), "admin");
-                   // intent = new Intent(LoginActivity.this, DashboardDoctor.class);
-                    //callService(etUserName.getText().toString(), etPassword.getText().toString(), "doctor");
-                }else if(rb_User.isChecked()){
-                    intent = new Intent(LoginActivity.this, UserDashboardActivity.class);
-                    //callService(etUserName.getText().toString(), etPassword.getText().toString(), "user");
-
-                }else if(rb_Admin.isChecked()){
-                    intent = new Intent(LoginActivity.this, MainActivity.class);
-                    //callService(etUserName.getText().toString(), etPassword.getText().toString(), "admin");
-
+                   // intent = new Intent(LoginActivity.this, MainActivity.class);
+                    callLoginService(etUserName.getText().toString(), etPassword.getText().toString(), "admin");
                 }else {
                     Toast.makeText(LoginActivity.this,"Please Select Valid Profile",Toast.LENGTH_SHORT).show();
                 }
 
-                startActivity(intent);
+          //      startActivity(intent);
 
 
                 //Toast.makeText(LoginActivity.this, "Invalid Login Credentials", Toast.LENGTH_SHORT).show();
@@ -179,17 +171,19 @@ public class LoginActivity extends AppCompatActivity {
         cv_forgotPassword = findViewById(R.id.cv_forgotPassword);
         txt_login_again = findViewById(R.id.txt_login_again);
         rb_Doctor = findViewById(R.id.rb_doctor_rb);
+        rb_Doctor.setChecked(true);
         rb_User = findViewById(R.id.rb_patient_rb);
         rb_Admin = findViewById(R.id.rb_admin_rb);
+        progressDialog = findViewById(R.id.progressDialog);
     }
 
     AsyncTask<Void, Void, Response> asyncTask;
     private void callLoginService(String username, String password, String role){
          asyncTask = new AsyncTask<Void, Void, Response>() {
-            @SuppressLint("StaticFieldLeak")
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
+                progressDialog.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -203,7 +197,7 @@ public class LoginActivity extends AppCompatActivity {
                     obj.put("username", username);
                     obj.put("password", password);
                     obj.put("role", role);
-                    response = dataTransfer.accessAPI("","",obj.toString());
+                    response = dataTransfer.accessAPI("login","POST",obj.toString());
 
 
                 } catch (IOException | JSONException exception) {
@@ -216,8 +210,28 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(Response response) {
                 super.onPostExecute(response);
+                processLoginResponse(response);
             }
         };
         asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+    private void processLoginResponse(Response response){
+        progressDialog.setVisibility(View.GONE);
+
+        if (response.getStatusCode()==200){
+            Intent intent= null;
+            if(rb_Doctor.isChecked()){
+                  intent = new Intent(LoginActivity.this, DashboardDoctor.class);
+            }else if(rb_User.isChecked()){
+                  intent = new Intent(LoginActivity.this, UserDashboardActivity.class);
+            }else if(rb_Admin.isChecked()){
+                 intent = new Intent(LoginActivity.this, MainActivity.class);
+            }
+            startActivity(intent);
+        }else{
+            Toast.makeText(LoginActivity.this, response.getResponse(), Toast.LENGTH_SHORT).show();
+
+        }
     }
 }

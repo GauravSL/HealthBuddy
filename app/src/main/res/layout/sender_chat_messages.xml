@@ -272,18 +272,17 @@
 
     </LinearLayout>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
-
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="Enter message"/>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_Login"
             android:layout_width="wrap_content"
@@ -295,11 +294,6 @@
             android:text="Send"
             android:textColor="@color/white"
             android:textStyle="bold|italic"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginStart="10dp"/>
     </LinearLayout>
-
-
-
-
-
 </RelativeLayout>

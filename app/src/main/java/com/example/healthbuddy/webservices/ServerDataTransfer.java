@@ -32,12 +32,14 @@ public class ServerDataTransfer {
 
     String TAG = ServerDataTransfer.class.toString();
     private String bodyData = null;
+    private String BASE_URL= "http://192.168.29.53:8080/ServerHealthBuddy/rest/healthbuddy/";
 
 
     public Response accessAPI(String url, String methodType, String jsonData) throws IOException {
 
-        url = "http://192.168.29.31:8080/ServerHealthBuddy/rest/customers/login";
-        methodType = "POST";
+        //url = BASE_URL + url;
+        url = BASE_URL + url;
+        //methodType = methodType;
         HashMap<String, String> data = null;
         //bodyData = "{\"message\":\"Hello\"}";
         bodyData = jsonData;
