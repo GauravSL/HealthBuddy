@@ -14,7 +14,13 @@
     <fragment
         android:id="@+id/nav_user_app"
         android:name="com.example.healthbuddy.patient.dashboard.ui.appointment.adapter.AppointmentFragment"
-        android:label="@string/title_user_my_app"
+        android:label="My Appointment"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_sched_app"
+        android:name="com.example.healthbuddy.patient.dashboard.ui.schedule.ScheduleAppointment"
+        android:label="Schedule Appointment"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
@@ -25,6 +31,6 @@
     <fragment
         android:id="@+id/nav_ordermed"
         android:name="com.example.healthbuddy.patient.dashboard.ui.ordermed.OrderMedicineFragment"
-        android:label="@string/title_user_order_med"
+        android:label="Order Medicine"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>

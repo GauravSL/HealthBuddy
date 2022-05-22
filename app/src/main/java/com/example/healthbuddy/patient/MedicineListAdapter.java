@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -46,7 +47,7 @@ String sMedicineName = medincineData.get(position);
     }
     public class MedicineView extends RecyclerView.ViewHolder{
         TextView medicineName;
-        TextView medincineType;
+        ImageView medicineType;
         TextView medicineQuant;
 
         public MedicineView(@NonNull View itemView) {
@@ -54,6 +55,7 @@ String sMedicineName = medincineData.get(position);
             medicineName = itemView.findViewById(R.id.tv_medicines);
 
             medicineQuant = itemView.findViewById(R.id.tv_Avail_Quabtity);
+            medicineType = itemView.findViewById(R.id.iv_medicine_type);
         }
     }
 }

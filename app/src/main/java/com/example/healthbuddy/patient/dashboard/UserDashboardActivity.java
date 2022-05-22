@@ -42,7 +42,7 @@ public class UserDashboardActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_user_app, R.id.nav_user_profile, R.id.nav_ordermed)
+                R.id.nav_home, R.id.nav_user_app, R.id.nav_sched_app, R.id.nav_user_profile, R.id.nav_ordermed)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_user_dashboard);
