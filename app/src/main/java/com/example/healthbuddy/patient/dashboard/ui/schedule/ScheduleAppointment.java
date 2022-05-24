@@ -67,7 +67,7 @@ public class ScheduleAppointment extends Fragment {
         });
 
         et_select_time = (EditText) root.findViewById(R.id.et_select_time);
-        
+
 
         et_select_time.setOnClickListener(new View.OnClickListener() {
             @Override
