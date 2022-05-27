@@ -106,14 +106,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Online" />
+                android:text="Online"
+                android:buttonTint="@color/blue"/>
 
             <RadioButton
                 android:id="@+id/rbOffline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Offline" />
+                android:text="Offline"
+                android:buttonTint="@color/blue"/>
         </RadioGroup>
         <ProgressBar
             android:id="@+id/progressDialog"
