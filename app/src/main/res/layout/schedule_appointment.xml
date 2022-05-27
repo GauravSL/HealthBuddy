@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp20"
-        android:text="Scedule Your Appointment"
+        android:text="Schedule Your Appointment"
         android:textSize="30sp"
         android:fontFamily="sans-serif-condensed"
         android:textColor="@color/black"
@@ -32,25 +32,20 @@
         android:id="@+id/sp_doc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:background="@drawable/user_edittext_roundedcorner"
+        />
 
     <TextView
+        android:id="@+id/doctorAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginStart="8dp"
-        android:hint="Adress"
+        android:hint="Address"
         android:textColor="@color/black"
-
         android:textStyle="bold"
         />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="20sp"
-        android:textColor="@color/black"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -66,7 +61,10 @@
         android:id="@+id/et_schedule_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:background="@drawable/user_edittext_roundedcorner"
+        android:focusable="false"
+        android:padding="5dp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -81,7 +79,10 @@
     <EditText
         android:id="@+id/et_select_time"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="@drawable/user_edittext_roundedcorner"
+        android:focusable="false"
+        android:padding="5dp"/>
 
 
     <TextView
