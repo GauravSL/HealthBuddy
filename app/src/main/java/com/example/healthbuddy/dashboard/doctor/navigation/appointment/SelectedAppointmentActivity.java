@@ -16,6 +16,8 @@ public class SelectedAppointmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DoctorAppointmentFragmentBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.progressDialog.setVisibility(View.GONE);
+        binding.tabContainer.setVisibility(View.VISIBLE);
 
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Details"));
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Chat"));
