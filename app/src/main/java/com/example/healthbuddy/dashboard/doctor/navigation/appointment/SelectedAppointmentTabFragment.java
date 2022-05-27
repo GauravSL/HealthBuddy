@@ -36,8 +36,8 @@ public class SelectedAppointmentTabFragment extends Fragment {
         // set up the RecyclerView
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        DoctorOfflineAppointmentListAdapter adapter = new DoctorOfflineAppointmentListAdapter(getContext(), appointmentData);
-        recyclerView.setAdapter(adapter);
+       // DoctorOfflineAppointmentListAdapter adapter = new DoctorOfflineAppointmentListAdapter(getContext(), );
+     //   recyclerView.setAdapter(adapter);
         return view;
     }
 

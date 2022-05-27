@@ -10,17 +10,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.healthbuddy.R;
+import com.example.healthbuddy.webservices.model.UserAppointmentDetails;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserOnlineAppointmentListAdapter extends RecyclerView.Adapter<UserOnlineAppointmentListAdapter.ViewHolder> {
 
-    private Context context;
-    private List<String> appointmentData;
+    private final Context context;
+    private final ArrayList<UserAppointmentDetails> userAppointmentsList;
 
-    public UserOnlineAppointmentListAdapter(Context context, List<String> appointmentData){
+    public UserOnlineAppointmentListAdapter(Context context, ArrayList<UserAppointmentDetails> userAppointmentsList){
         this.context = context;
-        this.appointmentData = appointmentData;
+        this.userAppointmentsList = userAppointmentsList;
     }
 
     @NonNull
@@ -33,22 +35,30 @@ public class UserOnlineAppointmentListAdapter extends RecyclerView.Adapter<UserO
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String patientName = appointmentData.get(position);
-        holder.patientName.setText(patientName);
+        UserAppointmentDetails appointmentDetails = userAppointmentsList.get(position);
+        holder.doctorName.setText(appointmentDetails.getDoctorName());
+        holder.doctorContact.setText(appointmentDetails.getDoctorMobile());
+        holder.txtAppointmentId.setText(appointmentDetails.getAppointmentId());
+        holder.appointmentDate.setText(appointmentDetails.getAppointmentDate().split("T")[0]);
+        holder.appointmentTime.setText(appointmentDetails.getAppointmentDate().split("T")[1]);
     }
 
     @Override
     public int getItemCount() {
-        return appointmentData.size();
+        return userAppointmentsList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView patientName ;
+        TextView doctorName, txtAppointmentId, doctorContact, appointmentDate,  appointmentTime;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            patientName = itemView.findViewById(R.id.txtPatientName);
+            doctorName = itemView.findViewById(R.id.txtPatientName);
+            doctorContact = itemView.findViewById(R.id.txtPatientContact);
+            txtAppointmentId = itemView.findViewById(R.id.txtAppointmentId);
+            appointmentDate = itemView.findViewById(R.id.txtPatientSlotDate);
+            appointmentTime = itemView.findViewById(R.id.txtPatientSlotTime);
         }
     }
 }

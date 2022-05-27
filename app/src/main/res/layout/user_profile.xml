@@ -20,7 +20,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp10"
             android:orientation="vertical">
 
@@ -60,7 +60,9 @@
                 android:hint="Name"
                 android:maxLines="2"
                 android:padding="5dp"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:enabled="false"
+                android:clickable="false"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -78,7 +80,9 @@
                 android:hint="Enter Mail"
                 android:inputType="textEmailAddress"
                 android:padding="5dp"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:enabled="false"
+                android:clickable="false"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -95,12 +99,13 @@
                 android:background="@drawable/user_edittext_roundedcorner"
                 android:hint="Enter Mobile No"
                 android:inputType="number"
-
                 android:maxLength="10"
                 android:padding="5dp"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:enabled="false"
+                android:clickable="false"/>
 
-            <TextView
+           <!-- <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -112,11 +117,12 @@
                 android:id="@+id/et_userDOB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:background="@drawable/user_edittext_roundedcorner"
                 android:hint="DOB"
                 android:padding="5dp"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:enabled="false"
+                android:clickable="false"/>-->
 
             <TextView
                 android:layout_width="match_parent"
@@ -131,10 +137,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/user_edittext_roundedcorner"
-
                 android:hint="Address"
                 android:padding="5dp"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:enabled="false"
+                android:clickable="false"/>
 
             <LinearLayout
                 android:id="@+id/password_container"

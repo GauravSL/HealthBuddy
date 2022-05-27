@@ -30,7 +30,7 @@ import java.util.Locale;
 
 public class UserRegistrationActivity extends AppCompatActivity {
     final Calendar myCalendar= Calendar.getInstance();
-    EditText et_userDOB;
+    //EditText et_userDOB;
     LinearLayout ll_password_container;
             RelativeLayout main_container;
     private ShapeableImageView img_profile;
@@ -53,18 +53,18 @@ public class UserRegistrationActivity extends AppCompatActivity {
                 updateLabel();
             }
         };
-        et_userDOB.setOnClickListener(new View.OnClickListener() {
+        /*et_userDOB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new DatePickerDialog(UserRegistrationActivity.this,date,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
-        });
+        });*/
         btn_submit.setOnClickListener(view -> callRegistrationService());
 
     }
 
     public void initView(){
-        et_userDOB=(EditText) findViewById(R.id.et_userDOB);
+     //   et_userDOB=(EditText) findViewById(R.id.et_userDOB);
         ll_password_container=(LinearLayout) findViewById(R.id.password_container);
         ll_password_container.setVisibility(View.VISIBLE);
         main_container=(RelativeLayout) findViewById(R.id.main_container);
@@ -86,8 +86,9 @@ public class UserRegistrationActivity extends AppCompatActivity {
     private void updateLabel(){
         String myFormat="MM/dd/yy";
         SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
-        et_userDOB.setText(dateFormat.format(myCalendar.getTime()));
+    //    et_userDOB.setText(dateFormat.format(myCalendar.getTime()));
     }
+
 
     AsyncTask<Void, Void, Response> asyncTask;
     private void callRegistrationService(){
@@ -130,9 +131,9 @@ public class UserRegistrationActivity extends AppCompatActivity {
         };
         asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
-
     private void processLoginResponse(Response response){
         progressDialog.setVisibility(View.GONE);
         Toast.makeText(this, response.getResponse(), Toast.LENGTH_LONG).show();
+        finish();
     }
 }

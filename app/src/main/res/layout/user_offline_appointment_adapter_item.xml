@@ -134,7 +134,7 @@
                     android:id="@+id/txtPatientHospitalToVisit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="RIMMS"
+                    android:text=""
                     android:textSize="@dimen/sp14" />
             </LinearLayout>
             <LinearLayout
@@ -153,7 +153,6 @@
                     android:id="@+id/txtPatientHospitalAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nawathe Square, Rajapeth, Amravati - 444605"
                     android:textSize="@dimen/sp14" />
             </LinearLayout>
         </LinearLayout>

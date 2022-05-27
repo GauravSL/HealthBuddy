@@ -2,110 +2,130 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:background="@drawable/background2"
     android:orientation="vertical"
-    android:background="@drawable/background2">
+    android:padding="@dimen/dp10">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp20"
-        android:text="Scedule Your Appointment"
-        android:textSize="30sp"
-        android:fontFamily="sans-serif-condensed"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:gravity="center"/>
-
-    <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:hint="Select Doctors"
-    android:textColor="@color/black"
-    android:textStyle="bold"
-    />
-    <Spinner
-        android:id="@+id/sp_doc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Adress"
-        android:textColor="@color/black"
-
-        android:textStyle="bold"
-        />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="20sp"
-        android:textColor="@color/black"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Select Date"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        />
-
-    <EditText
-        android:id="@+id/et_schedule_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Select Time"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        />
-
-    <EditText
-        android:id="@+id/et_select_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Select Type"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        />
-
-   <RadioGroup
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:orientation="horizontal">
-        <RadioButton
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Online"/>
+            android:layout_marginTop="@dimen/dp20"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:text="Scedule Your Appointment"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Select Doctors"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/sp_doc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            style="@style/Widget.AppCompat.DropDownItem.Spinner"
+            android:background="@drawable/user_edittext_roundedcorner" />
+
+        <TextView
+            android:id="@+id/doctorAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Select Date"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/et_schedule_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/user_edittext_roundedcorner"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:focusable="false"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Select Time"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            />
+
+        <EditText
+            android:id="@+id/et_select_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/user_edittext_roundedcorner"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:focusable="false"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Select Type"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <RadioButton
+                android:id="@+id/rbOnline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Offline"/>
+                android:text="Online" />
+
+            <RadioButton
+                android:id="@+id/rbOffline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Offline" />
         </RadioGroup>
+        <ProgressBar
+            android:id="@+id/progressDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.HealthBuddy.BlueColor"
+            android:visibility="visible"
+            android:layout_gravity="center"/>
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_schedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/dp10"
+            android:background="@drawable/doctor_roundedcorner_button"
+            android:backgroundTint="@color/blue"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Schedule"
+            android:textColor="@color/white"
+            android:textStyle="bold|italic" />
 
-
-
-
-
-
-</LinearLayout>
+    </LinearLayout>

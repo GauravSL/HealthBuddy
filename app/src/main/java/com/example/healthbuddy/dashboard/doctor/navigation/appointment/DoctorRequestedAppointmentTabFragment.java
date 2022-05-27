@@ -12,14 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.healthbuddy.R;
 import com.example.healthbuddy.dashboard.doctor.navigation.appointment.adapter.DoctorOnlineAppointmentListAdapter;
 import com.example.healthbuddy.dashboard.doctor.navigation.appointment.adapter.DoctorRequestedAppointmentListAdapter;
+import com.example.healthbuddy.webservices.model.DoctorAppointmentDetails;
+import com.example.healthbuddy.webservices.model.UserAppointmentDetails;
 
 import java.util.ArrayList;
 
 public class DoctorRequestedAppointmentTabFragment extends Fragment {
 
+    private ArrayList<DoctorAppointmentDetails> doctorAppointmentsList;
 
-    public DoctorRequestedAppointmentTabFragment() {
-        // Required empty public constructor
+    public DoctorRequestedAppointmentTabFragment(ArrayList<DoctorAppointmentDetails> doctorAppointmentsList) {
+        this.doctorAppointmentsList =doctorAppointmentsList;
     }
 
     @Override
@@ -27,17 +30,10 @@ public class DoctorRequestedAppointmentTabFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.list_fragment, container, false);
 
-        ArrayList<String> appointmentData = new ArrayList<>();
-        appointmentData.add("Gaurav Lakade");
-        appointmentData.add("Nikhil Kewatkar");
-        appointmentData.add("Praktan Raut");
-        appointmentData.add("Mangal Thakur");
-        appointmentData.add("Manoj Tawlarkar");
-
         // set up the RecyclerView
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        DoctorRequestedAppointmentListAdapter adapter = new DoctorRequestedAppointmentListAdapter(getContext(), appointmentData);
+        DoctorRequestedAppointmentListAdapter adapter = new DoctorRequestedAppointmentListAdapter(getContext(), doctorAppointmentsList);
         recyclerView.setAdapter(adapter);
         return view;
     }
