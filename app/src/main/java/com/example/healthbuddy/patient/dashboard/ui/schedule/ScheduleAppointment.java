@@ -76,7 +76,6 @@ public class ScheduleAppointment extends Fragment {
         });
 
 
-
         binding.etSelectTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
