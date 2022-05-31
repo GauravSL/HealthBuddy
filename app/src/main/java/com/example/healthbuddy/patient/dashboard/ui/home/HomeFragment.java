@@ -1,5 +1,6 @@
 package com.example.healthbuddy.patient.dashboard.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,14 +21,42 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = UserHomeDashboardBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
 
+        binding.cvAvailableAmbulance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AmbulanceAvailableFragment.class);
+                getActivity().startActivity(intent);
+            }
+        });
 
-        return root;
+        binding.cvAvailableBeds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), BedAvailableFragment.class);
+                getActivity().startActivity(intent);
+            }
+        });
+
+        binding.cvAvailableHospital.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AvailableHospitalFragment.class);
+                getActivity().startActivity(intent);
+            }
+        });
+
+        binding.cvDoctorWithUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DoctorWithUsFragment.class);
+                getActivity().startActivity(intent);
+            }
+        });
+
+        return binding.getRoot();
     }
 
     @Override

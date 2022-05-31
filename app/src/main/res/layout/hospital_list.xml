@@ -55,7 +55,7 @@
                 <TextView
                     android:id="@+id/txtHospital_contact"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="33dp"
                     android:text="9857845235"
                     android:textColor="@color/black"
                     android:textSize="@dimen/sp14" />
@@ -96,7 +96,7 @@
                     <TextView
                         android:id="@+id/txtHospital_Timings"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="33dp"
                         android:text="9am - 11pm"
                         android:textColor="@color/black"
                         android:textSize="@dimen/sp14" />

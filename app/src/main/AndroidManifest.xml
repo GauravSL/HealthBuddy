@@ -36,6 +36,19 @@
             android:name=".registration.user.UserRegistrationActivity"
             android:exported="false" />
         <activity
+            android:name=".patient.dashboard.ui.home.AmbulanceAvailableFragment"
+            android:exported="false" />
+        <activity
+            android:name=".patient.dashboard.ui.home.AvailableHospitalFragment"
+            android:exported="false" />
+        <activity
+            android:name=".patient.dashboard.ui.home.BedAvailableFragment"
+            android:exported="false" />
+        <activity
+        android:name=".patient.dashboard.ui.home.DoctorWithUsFragment"
+        android:exported="false" />
+
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
