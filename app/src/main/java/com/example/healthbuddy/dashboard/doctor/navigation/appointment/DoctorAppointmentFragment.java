@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.healthbuddy.databinding.DoctorAppointmentFragmentBinding;
+import com.example.healthbuddy.webservices.Constants;
 import com.example.healthbuddy.webservices.Response;
 import com.example.healthbuddy.webservices.ServerDataTransfer;
 import com.example.healthbuddy.webservices.model.DoctorAppointmentDetails;
@@ -89,7 +90,7 @@ public class DoctorAppointmentFragment extends Fragment {
                 Response response = null;
                 try {
                     JSONObject json = new JSONObject();
-                    json.put("doctor_id", "2");
+                    json.put("doctor_id", Constants.doctorDetails.getId());
                     response = dataTransfer.accessAPI("doctorAppointmentList","POST",json.toString());
                 } catch (IOException | JSONException exception) {
                     exception.printStackTrace();
@@ -107,7 +108,7 @@ public class DoctorAppointmentFragment extends Fragment {
         asyncTaskGetAppointments.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
-
+     DoctorAppointmentTabAdapter adapter;
     private void processAppointmentList(Response response) {
         binding.progressDialog.setVisibility(View.GONE);
 
@@ -116,10 +117,16 @@ public class DoctorAppointmentFragment extends Fragment {
         doctorAppointmentsList = new Gson().fromJson(response.getResponse(), type);
         if (doctorAppointmentsList.size() > 0) {
             binding.tabContainer.setVisibility(View.VISIBLE);
-            final DoctorAppointmentTabAdapter adapter = new DoctorAppointmentTabAdapter(getContext(), requireActivity().getSupportFragmentManager(), binding.tabLayout.getTabCount(), doctorAppointmentsList);
+            adapter = new DoctorAppointmentTabAdapter(getContext(), requireActivity().getSupportFragmentManager(), binding.tabLayout.getTabCount(), doctorAppointmentsList);
             binding.viewPager.setAdapter(adapter);
         } else {
             binding.txtNoAppointment.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        callGetAppointmentsDetails();
     }
 }

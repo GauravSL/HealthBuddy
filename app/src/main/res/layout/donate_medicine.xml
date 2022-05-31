@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="15dp"
     android:orientation="vertical">
+    <ProgressBar
+        android:id="@+id/progressDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.HealthBuddy.TealColor"
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
@@ -49,14 +60,14 @@
                 android:id="@+id/syrup_radio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
                 android:text="Syrup" />
 
             <RadioButton
                 android:id="@+id/tablet_radio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
                 android:text="Tablet" />
 
         </RadioGroup>
@@ -79,39 +90,49 @@
         android:background="@drawable/doctor_editttext_roundedcorner"
         android:hint="MM/YYYY"
         android:padding="5dp"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Quantity"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etQuantity"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/doctor_editttext_roundedcorner"
+                android:text=""
+                android:padding="@dimen/dp10"/>
+
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/donate_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Quantity"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:background="@drawable/doctor_editttext_roundedcorner"
-            android:text="" />
-
+            android:background="@drawable/doctor_roundedcorner_button"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Submit"
+            android:textColor="@color/white"
+            android:textStyle="bold|italic"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginBottom="@dimen/dp20"
+            />
 
     </LinearLayout>
-    <Button
-        android:id="@+id/donate_button"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:text="Donate"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"/>
 
-
-
-</LinearLayout>
+</RelativeLayout>

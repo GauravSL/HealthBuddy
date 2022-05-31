@@ -24,6 +24,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.healthbuddy.R;
 import com.example.healthbuddy.databinding.ScheduleAppointmentBinding;
+import com.example.healthbuddy.webservices.Constants;
 import com.example.healthbuddy.webservices.Response;
 import com.example.healthbuddy.webservices.ServerDataTransfer;
 import com.example.healthbuddy.webservices.model.DoctorDetails;
@@ -161,7 +162,7 @@ public class ScheduleAppointment extends Fragment {
                     }
                     JSONObject json = new JSONObject();
                     json.put("doctor_id", doctor_id);
-                    json.put("user_id", "4");
+                    json.put("user_id", Constants.userDetails.getId());
                     json.put("appointment_date", binding.etScheduleDate.getText().toString()+ " " + binding.etSelectTime.getText().toString());
                     if (binding.rbOnline.isChecked()){
                     json.put("appointment_mode", "Online");

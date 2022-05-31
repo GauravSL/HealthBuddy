@@ -28,7 +28,7 @@ public class MedicineListActivity extends AppCompatActivity {
 
         rvMedicienList = findViewById(R.id.rv_medicinelist);
         rvMedicienList.setLayoutManager(new LinearLayoutManager(this));
-        medicineListAdapter = new MedicineListAdapter(this ,medicineData);
+        medicineListAdapter = new MedicineListAdapter(this ,null);
         rvMedicienList.setAdapter(medicineListAdapter);
     }
 }

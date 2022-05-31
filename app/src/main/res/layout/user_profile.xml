@@ -60,9 +60,7 @@
                 android:hint="Name"
                 android:maxLines="2"
                 android:padding="5dp"
-                android:textSize="20sp"
-                android:enabled="false"
-                android:clickable="false"/>
+                android:textSize="20sp"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -81,8 +79,7 @@
                 android:inputType="textEmailAddress"
                 android:padding="5dp"
                 android:textSize="20sp"
-                android:enabled="false"
-                android:clickable="false"/>
+                />
 
             <TextView
                 android:layout_width="match_parent"
@@ -101,9 +98,7 @@
                 android:inputType="number"
                 android:maxLength="10"
                 android:padding="5dp"
-                android:textSize="20sp"
-                android:enabled="false"
-                android:clickable="false"/>
+                android:textSize="20sp"/>
 
            <!-- <TextView
                 android:layout_width="match_parent"
@@ -139,9 +134,7 @@
                 android:background="@drawable/user_edittext_roundedcorner"
                 android:hint="Address"
                 android:padding="5dp"
-                android:textSize="20sp"
-                android:enabled="false"
-                android:clickable="false"/>
+                android:textSize="20sp"/>
 
             <LinearLayout
                 android:id="@+id/password_container"

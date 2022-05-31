@@ -24,12 +24,11 @@
                 android:id="@+id/txtAppointmentId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="end"
+                android:gravity="center"
                 android:text="APP78521"
                 android:textColor="@color/teal_200"
-                android:textSize="@dimen/sp16"
+                android:textSize="@dimen/sp20"
                 android:textStyle="bold"
-                app:drawableStartCompat="@drawable/icon_username"
                 app:drawableTint="@color/teal_200" />
 
             <TextView
@@ -38,13 +37,14 @@
                 android:layout_height="wrap_content"
                 android:text="Gaurav Lakade"
                 android:textColor="@color/PrimaryDarkColor"
-                android:textSize="@dimen/sp16"
-                android:textStyle="bold" />
+                android:textSize="@dimen/sp18"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/teal_200"/>
-
+                android:background="@color/teal_200"
+                android:layout_marginTop="5dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:text="Contact :- "
                     android:textColor="@color/black"
-                    android:textSize="@dimen/sp14"
+                    android:textSize="@dimen/sp16"
                     android:textStyle="bold" />
 
                 <TextView
@@ -64,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="9857845235"
-                    android:textSize="@dimen/sp14" />
+                    android:textSize="@dimen/sp16" />
             </LinearLayout>
 
             <LinearLayout
@@ -83,7 +83,7 @@
                         android:layout_height="wrap_content"
                         android:text="Date :- "
                         android:textColor="@color/black"
-                        android:textSize="@dimen/sp14"
+                        android:textSize="@dimen/sp16"
                         android:textStyle="bold" />
 
                     <TextView
@@ -91,7 +91,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Monday 24, 2022"
-                        android:textSize="@dimen/sp14" />
+                        android:textSize="@dimen/sp16" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -107,7 +107,7 @@
                         android:layout_marginStart="@dimen/dp10"
                         android:text="Time :- "
                         android:textColor="@color/black"
-                        android:textSize="@dimen/sp14"
+                        android:textSize="@dimen/sp16"
                         android:textStyle="bold" />
 
                     <TextView
@@ -115,7 +115,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="11:30AM"
-                        android:textSize="@dimen/sp14" />
+                        android:textSize="@dimen/sp16" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -148,7 +148,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Address :- "
-                    android:textSize="@dimen/sp14"
+                    android:textSize="@dimen/sp16"
                     android:textStyle="bold"
                     android:textColor="@color/black"/>
                 <TextView
@@ -156,95 +156,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Nawathe Square, Rajapeth, Amravati - 444605"
-                    android:textSize="@dimen/sp14" />
+                    android:textSize="@dimen/sp16" />
             </LinearLayout>
-            <LinearLayout
-                android:id="@+id/rejectionContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="5dp"
-                android:visibility="gone">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="REJECTED"
-                    android:textSize="@dimen/sp14"
-                    android:textStyle="bold"
-                    android:textColor="@color/chart_red"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="5dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Reason :- "
-                        android:textSize="@dimen/sp14"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"/>
-                    <TextView
-                        android:id="@+id/txtRejectionReason"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Due to time unavailability"
-                        android:textSize="@dimen/sp14" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/rejectionReasonContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="5dp"
-                android:visibility="gone">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rejection Reason :- "
-                    android:textSize="@dimen/sp14"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
-                <EditText
-                    android:id="@+id/etRejectionReason"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/sp14"
-                    android:hint="Add Rejection Reason"/>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/buttonContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp">
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_reject"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:text="Reject"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:background="#dd2c00"
-                    android:backgroundTint="#dd2c00"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sp14"/>
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_accept"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:text="Accept"
-                    android:layout_weight="1"
-                    android:layout_marginStart="@dimen/dp20"
-                    android:background="#003300"
-                    android:backgroundTint="#003300"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sp14"/>
-            </LinearLayout>
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

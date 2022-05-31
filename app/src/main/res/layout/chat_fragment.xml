@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <ProgressBar
+        android:id="@+id/progressDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:theme="@style/Theme.HealthBuddy.BlueColor"
+        android:visibility="gone"
+        android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/txtNoAppointment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="No Chat Available"
+        android:visibility="gone"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_chatList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomContainer"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/bottomContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:visibility="visible">
+        <EditText
+            android:id="@+id/tv_messageToSend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Enter message"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_Send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/doctor_roundedcorner_button"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Send"
+            android:textColor="@color/white"
+            android:textStyle="bold|italic"
+            android:layout_marginStart="10dp"/>
+    </LinearLayout>
+</RelativeLayout>

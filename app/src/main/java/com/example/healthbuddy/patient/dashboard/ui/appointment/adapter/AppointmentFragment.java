@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import com.example.healthbuddy.R;
 import com.example.healthbuddy.databinding.DoctorAppointmentFragmentBinding;
 import com.example.healthbuddy.patient.dashboard.ui.appointment.AppointmentTabAdapter;
+import com.example.healthbuddy.webservices.Constants;
 import com.example.healthbuddy.webservices.Response;
 import com.example.healthbuddy.webservices.ServerDataTransfer;
 import com.example.healthbuddy.webservices.model.UserAppointmentDetails;
@@ -39,7 +40,7 @@ public class AppointmentFragment extends Fragment {
 
         binding = DoctorAppointmentFragmentBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        callGetAppointmentsDetails();
+        //callGetAppointmentsDetails();
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Online"));
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Offline"));
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Requested"));
@@ -94,7 +95,7 @@ public class AppointmentFragment extends Fragment {
                 Response response = null;
                 try {
                     JSONObject json = new JSONObject();
-                    json.put("user_id", "4");
+                    json.put("user_id", Constants.userDetails.getId());
                     response = dataTransfer.accessAPI("userAppointmentList","POST",json.toString());
                 } catch (IOException | JSONException exception) {
                     exception.printStackTrace();
@@ -125,5 +126,11 @@ public class AppointmentFragment extends Fragment {
         } else {
             binding.txtNoAppointment.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        callGetAppointmentsDetails();
     }
 }

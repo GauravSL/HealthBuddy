@@ -21,13 +21,20 @@ import com.example.healthbuddy.dashboard.doctor.DashboardDoctor;
 import com.example.healthbuddy.patient.dashboard.UserDashboardActivity;
 import com.example.healthbuddy.registration.doctor.DoctorRegistrationActivity;
 import com.example.healthbuddy.registration.user.UserRegistrationActivity;
+import com.example.healthbuddy.webservices.Constants;
 import com.example.healthbuddy.webservices.Response;
 import com.example.healthbuddy.webservices.ServerDataTransfer;
+import com.example.healthbuddy.webservices.model.DoctorDetails;
+import com.example.healthbuddy.webservices.model.UserDetails;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -222,8 +229,16 @@ public class LoginActivity extends AppCompatActivity {
         if (response.getStatusCode()==200){
             Intent intent= null;
             if(rb_Doctor.isChecked()){
+                Type type = new TypeToken<ArrayList<DoctorDetails>>() {
+                }.getType();
+                ArrayList<DoctorDetails> doctorList = new Gson().fromJson(response.getResponse(), type);
+                Constants.doctorDetails = doctorList.get(0);
                   intent = new Intent(LoginActivity.this, DashboardDoctor.class);
             }else if(rb_User.isChecked()){
+                Type type = new TypeToken<ArrayList<UserDetails>>() {
+                }.getType();
+                ArrayList<UserDetails> userDetails = new Gson().fromJson(response.getResponse(), type);
+                Constants.userDetails = userDetails.get(0);
                   intent = new Intent(LoginActivity.this, UserDashboardActivity.class);
             }else if(rb_Admin.isChecked()){
                  intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -231,7 +246,6 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         }else{
             Toast.makeText(LoginActivity.this, response.getResponse(), Toast.LENGTH_SHORT).show();
-
         }
     }
 }

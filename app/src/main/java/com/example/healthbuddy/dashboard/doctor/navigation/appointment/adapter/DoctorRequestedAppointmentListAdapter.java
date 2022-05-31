@@ -1,18 +1,28 @@
 package com.example.healthbuddy.dashboard.doctor.navigation.appointment.adapter;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.healthbuddy.R;
+import com.example.healthbuddy.webservices.Response;
+import com.example.healthbuddy.webservices.ServerDataTransfer;
 import com.example.healthbuddy.webservices.model.DoctorAppointmentDetails;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +30,7 @@ public class DoctorRequestedAppointmentListAdapter extends RecyclerView.Adapter<
 
     private Context context;
     private ArrayList<DoctorAppointmentDetails> doctorAppointmentsList;
+    private int selectedPosition;
 
     public DoctorRequestedAppointmentListAdapter(Context context,  ArrayList<DoctorAppointmentDetails> doctorAppointmentsList){
          this.context = context;
@@ -50,7 +61,113 @@ public class DoctorRequestedAppointmentListAdapter extends RecyclerView.Adapter<
         }else{
             holder.rejectionContainer.setVisibility(View.GONE);
         }
+
+        holder.btn_accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedPosition = holder.getAdapterPosition();
+                callAcceptAppointment(doctorAppointmentsList.get(holder.getAdapterPosition()).getDoctorId()
+                        ,doctorAppointmentsList.get(holder.getAdapterPosition()).getAppointmentId() );
+
+            }
+        });
+
+        holder.btn_reject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (holder.rejectionReasonContainer.getVisibility() == View.VISIBLE){
+                    if (holder.etRejectionReason.getText().toString().isEmpty()){
+                        Toast.makeText(context, "Enter Rejection Reason", Toast.LENGTH_LONG).show();
+                    }else{
+                        selectedPosition = holder.getAdapterPosition();
+                        callRejectAppointment(doctorAppointmentsList.get(holder.getAdapterPosition()).getAppointmentId(),
+                                holder.etRejectionReason.getText().toString());
+                    }
+                }else{
+                    holder.rejectionReasonContainer.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+
     }
+
+    AsyncTask<Void, Void, Response> asyncTaskGetAppointments;
+    private void callAcceptAppointment(String doctorId, String appointmentId){
+        asyncTaskGetAppointments = new AsyncTask<Void, Void, Response>() {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+               // binding.progressDialog.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            protected Response doInBackground(Void... strings) {
+                ServerDataTransfer dataTransfer = new ServerDataTransfer();
+                Response response = null;
+                try {
+                    JSONObject json = new JSONObject();
+                    json.put("appointment_id", appointmentId);
+                    json.put("doctor_id", doctorId);
+                    response = dataTransfer.accessAPI("acceptAppointment","POST",json.toString());
+                } catch (IOException | JSONException exception) {
+                    exception.printStackTrace();
+                }
+
+                return response;
+            }
+
+            @Override
+            protected void onPostExecute(Response response) {
+                super.onPostExecute(response);
+                processResponse(response);
+            }
+        };
+        asyncTaskGetAppointments.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+    AsyncTask<Void, Void, Response> asyncTaskRejectAppointments;
+    private void callRejectAppointment(String appointmentId, String rejectionReason){
+        asyncTaskRejectAppointments = new AsyncTask<Void, Void, Response>() {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                // binding.progressDialog.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            protected Response doInBackground(Void... strings) {
+                ServerDataTransfer dataTransfer = new ServerDataTransfer();
+                Response response = null;
+                try {
+                    JSONObject json = new JSONObject();
+                    json.put("appointment_id", appointmentId);
+                    json.put("rejection_reason", rejectionReason);
+                    response = dataTransfer.accessAPI("rejectAppointment","POST",json.toString());
+                } catch (IOException | JSONException exception) {
+                    exception.printStackTrace();
+                }
+
+                return response;
+            }
+
+            @Override
+            protected void onPostExecute(Response response) {
+                super.onPostExecute(response);
+                processResponse(response);
+            }
+        };
+        asyncTaskRejectAppointments.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+    private void processResponse(Response response){
+        Toast.makeText(context, response.getResponse(), Toast.LENGTH_LONG).show();
+        if (response.getStatusCode()==200){
+            doctorAppointmentsList.remove(selectedPosition);
+            notifyItemRemoved(selectedPosition);
+        }
+    }
+
 
     @Override
     public int getItemCount() {
@@ -61,7 +178,9 @@ public class DoctorRequestedAppointmentListAdapter extends RecyclerView.Adapter<
 
         TextView patientName, txtAppointmentId, doctorContact, appointmentDate,  appointmentTime, txtRejectionReason,
                 txtPatientHospitalToVisit, txtPatientHospitalAddress;
-        LinearLayout buttonContainer, rejectionContainer;
+        LinearLayout buttonContainer, rejectionContainer, rejectionReasonContainer;
+        AppCompatButton btn_reject, btn_accept;
+        EditText etRejectionReason;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -75,6 +194,10 @@ public class DoctorRequestedAppointmentListAdapter extends RecyclerView.Adapter<
             txtPatientHospitalAddress = itemView.findViewById(R.id.txtPatientHospitalAddress);
             buttonContainer = itemView.findViewById(R.id.buttonContainer);
             rejectionContainer = itemView.findViewById(R.id.rejectionContainer);
+            rejectionReasonContainer = itemView.findViewById(R.id.rejectionReasonContainer);
+            etRejectionReason = itemView.findViewById(R.id.etRejectionReason);
+            btn_reject = itemView.findViewById(R.id.btn_reject);
+            btn_accept = itemView.findViewById(R.id.btn_accept);
         }
     }
 }

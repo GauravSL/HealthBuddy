@@ -2,6 +2,7 @@ package com.example.healthbuddy.dashboard.doctor.navigation.appointment.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class DoctorOnlineAppointmentListAdapter extends RecyclerView.Adapter<Doc
         holder.txtPatientSlotTime.setText(appointmentDetails.getAppointmentDate().split("T")[1]);
         holder.itemView.setOnClickListener(view ->{
             Intent intent = new Intent(context, SelectedAppointmentActivity.class);
+            intent.putExtra("appointmentDetails", appointmentDetails);
             context.startActivity(intent);
                 });
     }

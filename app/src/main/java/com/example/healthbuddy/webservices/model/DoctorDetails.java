@@ -2,11 +2,11 @@ package com.example.healthbuddy.webservices.model;
 
 
 public class DoctorDetails {
-    private String doctorId;
-    private String doctorEmail;
+    private String doctor_id;
+    private String doctor_email;
     private String password;
-    private String doctorSpeciality;
-    private String doctorMobile;
+    private String doctor_speciality;
+    private String doctor_mobile;
     private Integer id;
     private String doctor_address;
     private String doctor_name;
@@ -14,16 +14,16 @@ public class DoctorDetails {
     private String hospital_name;
 
     public String getDoctorId() {
-        return doctorId;
+        return doctor_id;
     }
     public void setDoctorId(String doctorId) {
-        this.doctorId = doctorId;
+        this.doctor_id = doctorId;
     }
     public String getDoctorEmail() {
-        return doctorEmail;
+        return doctor_email;
     }
     public void setDoctorEmail(String doctorEmail) {
-        this.doctorEmail = doctorEmail;
+        this.doctor_email = doctorEmail;
     }
     public String getPassword() {
         return password;
@@ -32,16 +32,16 @@ public class DoctorDetails {
         this.password = password;
     }
     public String getDoctorSpeciality() {
-        return doctorSpeciality;
+        return doctor_speciality;
     }
     public void setDoctorSpeciality(String doctorSpeciality) {
-        this.doctorSpeciality = doctorSpeciality;
+        this.doctor_speciality = doctorSpeciality;
     }
     public String getDoctorMobile() {
-        return doctorMobile;
+        return doctor_mobile;
     }
     public void setDoctorMobile(String doctorMobile) {
-        this.doctorMobile = doctorMobile;
+        this.doctor_mobile = doctorMobile;
     }
     public Integer getId() {
         return id;

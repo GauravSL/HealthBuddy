@@ -1,4 +1,4 @@
-package com.example.healthbuddy.patient.dashboard.ui.profile;
+package com.example.healthbuddy.dashboard.doctor.navigation.profile;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -9,12 +9,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
-import com.example.healthbuddy.databinding.UserProfileBinding;
+import com.example.healthbuddy.databinding.DoctorProfileBinding;
 import com.example.healthbuddy.webservices.Constants;
 import com.example.healthbuddy.webservices.Response;
 import com.example.healthbuddy.webservices.ServerDataTransfer;
-import com.example.healthbuddy.webservices.model.UserDetails;
+import com.example.healthbuddy.webservices.model.DoctorDetails;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -26,16 +27,16 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 
-public class UserProfileFragment extends Fragment {
+public class DoctorProfileFragment extends Fragment {
 
-    private UserProfileBinding binding;
-    private ArrayList<UserDetails> userDetails;
+    private DoctorProfileBinding binding;
+    private ArrayList<DoctorDetails> doctorList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        binding = UserProfileBinding.inflate(inflater, container, false);
+        binding = DoctorProfileBinding.inflate(inflater, container, false);
         initView();
-        callGetUserDetails();
+        callGetDoctorDetails();
 
         return binding.getRoot();
     }
@@ -49,7 +50,7 @@ public class UserProfileFragment extends Fragment {
                 handleEdittextEnable(true);
             } else if (binding.btnSubmit.getText().toString().equalsIgnoreCase("Submit")){
                 handleEdittextEnable(false);
-                callUserUpdateService();
+                callDoctorUpdateService();
             }
         });
     }
@@ -60,9 +61,9 @@ public class UserProfileFragment extends Fragment {
         binding = null;
     }
 
-    AsyncTask<Void, Void, Response> asyncTaskGetUserDetails;
-    private void callGetUserDetails(){
-        asyncTaskGetUserDetails = new AsyncTask<Void, Void, Response>() {
+    AsyncTask<Void, Void, Response> asyncTaskGetDoctor;
+    private void callGetDoctorDetails(){
+        asyncTaskGetDoctor = new AsyncTask<Void, Void, Response>() {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
@@ -75,9 +76,8 @@ public class UserProfileFragment extends Fragment {
                 Response response = null;
                 try {
                     JSONObject json = new JSONObject();
-                    json.put("id", Constants.userDetails.getId());
-                    response = dataTransfer.accessAPI("getUserDetails","POST",json.toString());
-                } catch (IOException | JSONException exception) {
+                    json.put("id", Constants.doctorDetails.getId());
+                    response = dataTransfer.accessAPI("getDoctorDetails","POST",json.toString());                } catch (IOException | JSONException exception) {
                     exception.printStackTrace();
                 }
 
@@ -87,34 +87,26 @@ public class UserProfileFragment extends Fragment {
             @Override
             protected void onPostExecute(Response response) {
                 super.onPostExecute(response);
-                processUserDetails(response);
+                processDoctorList(response);
             }
         };
-        asyncTaskGetUserDetails.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        asyncTaskGetDoctor.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
-    private void processUserDetails(Response response) {
+    private void processDoctorList(Response response){
         binding.progressDialog.setVisibility(View.GONE);
         if (response.getStatusCode()==200) {
-            Type type = new TypeToken<ArrayList<UserDetails>>() {
+            Type type = new TypeToken<ArrayList<DoctorDetails>>() {
             }.getType();
-            userDetails = new Gson().fromJson(response.getResponse(), type);
+            doctorList = new Gson().fromJson(response.getResponse(), type);
             setUIValues();
         }else{
             Toast.makeText(getContext(), response.getResponse(), Toast.LENGTH_LONG).show();
         }
-
-    }
-
-    private void setUIValues() {
-        binding.etUserName.setText(userDetails.get(0).getUserName());
-        binding.etUserMail.setText(userDetails.get(0).getUserEmail());
-        binding.etUserMob.setText(userDetails.get(0).getUserMobile());
-        binding.etUserAddress.setText(userDetails.get(0).getUserAddress());
     }
 
     AsyncTask<Void, Void, Response> asyncTaskUpdateUserDetails;
-    private void callUserUpdateService(){
+    private void callDoctorUpdateService(){
         asyncTaskUpdateUserDetails = new AsyncTask<Void, Void, Response>() {
             @Override
             protected void onPreExecute() {
@@ -130,13 +122,15 @@ public class UserProfileFragment extends Fragment {
                     /*  apiDATA.put(Constants.AUTHORIZATION, "");*/
                     // String categoryId = impactedCategory.getCategoryId();
                     JSONObject json = new JSONObject();
-                    json.put("id", Constants.userDetails.getId());
-                    json.put("username", binding.etUserName.getText().toString());
-                    json.put("user_email", binding.etUserMail.getText().toString());
-                    json.put("user_mobile", binding.etUserMob.getText().toString());
-                    json.put("user_address",binding.etUserAddress.getText().toString());
+                    json.put("id", Constants.doctorDetails.getId());
+                    json.put("doctor_name", binding.etDoctorName.getText().toString());
+                    json.put("doctor_email", binding.etDoctorMail.getText().toString());
+                    json.put("doctor_mobile", binding.etDoctorMob.getText().toString());
+                    json.put("doctor_address",binding.etDoctorAddress.getText().toString());
+                    json.put("doctor_speciality",binding.etDoctorDegree.getText().toString());
+                    json.put("hospital_name",binding.etDoctorHospital.getText().toString());
 
-                    response = dataTransfer.accessAPI("updateUserDetails","POST",json.toString());
+                    response = dataTransfer.accessAPI("updateDoctorDetails","POST",json.toString());
 
 
                 } catch (IOException | JSONException exception) {
@@ -160,17 +154,27 @@ public class UserProfileFragment extends Fragment {
         Toast.makeText(getContext(), response.getResponse(), Toast.LENGTH_LONG).show();
     }
 
-    private void handleEdittextEnable(Boolean flag){
-        binding.etUserName.setEnabled(flag);
-        binding.etUserName.setClickable(flag);
-        binding.etUserMail.setEnabled(flag);
-        binding.etUserMail.setClickable(flag);
-        binding.etUserMob.setEnabled(flag);
-        binding.etUserMob.setClickable(flag);
-        binding.etUserAddress.setEnabled(flag);
-        binding.etUserAddress.setClickable(flag);
-        // binding.etUserDOB.setEnabled(flag);
-        //  binding.etUserDOB.setClickable(flag);
+    private void setUIValues() {
+        binding.etDoctorName.setText(doctorList.get(0).getDoctorName());
+        binding.etDoctorMail.setText(doctorList.get(0).getDoctorEmail());
+        binding.etDoctorMob.setText(doctorList.get(0).getDoctorMobile());
+        binding.etDoctorDegree.setText(doctorList.get(0).getDoctorSpeciality());
+        binding.etDoctorAddress.setText(doctorList.get(0).getDoctorAddress());
+        binding.etDoctorHospital.setText(doctorList.get(0).getHospital_name());
     }
 
+    private void handleEdittextEnable(Boolean flag) {
+        binding.etDoctorName.setEnabled(flag);
+        binding.etDoctorName.setClickable(flag);
+        binding.etDoctorMail.setEnabled(flag);
+        binding.etDoctorMail.setClickable(flag);
+        binding.etDoctorMob.setEnabled(flag);
+        binding.etDoctorMob.setClickable(flag);
+        binding.etDoctorDegree.setEnabled(flag);
+        binding.etDoctorDegree.setClickable(flag);
+        binding.etDoctorAddress.setEnabled(flag);
+        binding.etDoctorAddress.setClickable(flag);
+        binding.etDoctorHospital.setEnabled(flag);
+        binding.etDoctorHospital.setClickable(flag);
+    }
 }

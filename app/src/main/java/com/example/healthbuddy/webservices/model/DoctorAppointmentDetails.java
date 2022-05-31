@@ -1,6 +1,8 @@
 package com.example.healthbuddy.webservices.model;
 
-public class DoctorAppointmentDetails {
+import java.io.Serializable;
+
+public class DoctorAppointmentDetails implements Serializable {
     private String doctor_id;
     private String user_email;
     private String appointment_status;
@@ -87,4 +89,5 @@ public class DoctorAppointmentDetails {
     public void setRejectionReason(String rejection_reason) {
         this.rejection_reason = rejection_reason;
     }
+
 }

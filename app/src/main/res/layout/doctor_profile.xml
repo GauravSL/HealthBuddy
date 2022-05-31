@@ -126,6 +126,26 @@
         android:padding="5dp"
         android:textSize="20sp" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center_vertical"
+            android:text="   Hospital Name"
+            android:textSize="@dimen/sp14"
+            android:textStyle="italic"
+            app:drawableStartCompat="@drawable/icon_education"
+            app:drawableTint="@color/teal_200" />
+
+        <EditText
+            android:id="@+id/et_doctorHospital"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="3dp"
+            android:background="@drawable/doctor_editttext_roundedcorner"
+            android:padding="5dp"
+            android:textSize="20sp" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

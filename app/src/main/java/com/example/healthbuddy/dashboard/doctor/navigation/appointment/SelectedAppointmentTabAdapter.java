@@ -12,17 +12,25 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.healthbuddy.databinding.DoctorAppointmentFragmentBinding;
+import com.example.healthbuddy.webservices.model.DoctorAppointmentDetails;
+import com.example.healthbuddy.webservices.model.UserAppointmentDetails;
 import com.google.android.material.tabs.TabLayout;
 
 public class SelectedAppointmentTabAdapter extends FragmentPagerAdapter {
 
     private Context myContext;
     int totalTabs;
+    private DoctorAppointmentDetails doctorAppointmentDetails;
+    private UserAppointmentDetails userAppointmentDetails;
 
-    public SelectedAppointmentTabAdapter(Context context, FragmentManager fm, int totalTabs) {
+    public SelectedAppointmentTabAdapter(Context context, FragmentManager fm, int totalTabs,
+                                         DoctorAppointmentDetails doctorAppointmentDetails,
+                                         UserAppointmentDetails userAppointmentDetails) {
         super(fm);
         myContext = context;
         this.totalTabs = totalTabs;
+        this.doctorAppointmentDetails = doctorAppointmentDetails;
+        this.userAppointmentDetails = userAppointmentDetails;
     }
 
     // this is for fragment tabs
@@ -30,11 +38,15 @@ public class SelectedAppointmentTabAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                AppointmentDetailsFragment appointmentDetailsFragment = new AppointmentDetailsFragment();
-                return appointmentDetailsFragment;
+                return new AppointmentDetailsFragment(doctorAppointmentDetails, userAppointmentDetails);
             case 1:
-                ChatFragment chatFragment = new ChatFragment();
-                return chatFragment;
+                ChatFragment fragment = null;
+                if (doctorAppointmentDetails!=null){
+                    fragment = new ChatFragment(doctorAppointmentDetails.getAppointmentId(), "");
+                }else if(userAppointmentDetails!=null){
+                    fragment = new ChatFragment("", userAppointmentDetails.getAppointmentId());
+                }
+                return fragment;
 
             default:
                 return null;

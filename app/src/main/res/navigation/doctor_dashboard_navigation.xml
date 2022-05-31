@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.healthbuddy.dashboard.doctor.navigation.dashboard.DoctorProfileFragment"
+        android:name="com.example.healthbuddy.dashboard.doctor.navigation.profile.DoctorProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.healthbuddy.dashboard.doctor.navigation.notifications.DonateMedicineFragment"
+        android:name="com.example.healthbuddy.dashboard.doctor.navigation.medicine.DonateMedicineFragment"
         android:label="@string/title_donate_med"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

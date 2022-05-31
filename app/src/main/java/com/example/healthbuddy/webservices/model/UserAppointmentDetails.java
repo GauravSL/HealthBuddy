@@ -1,6 +1,8 @@
 package com.example.healthbuddy.webservices.model;
 
-public class UserAppointmentDetails {
+import java.io.Serializable;
+
+public class UserAppointmentDetails implements Serializable {
     private String doctor_id;
     private String appointment_status;
     private String doctor_speciality;
