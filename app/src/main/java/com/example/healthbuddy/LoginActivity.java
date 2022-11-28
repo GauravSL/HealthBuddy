@@ -17,6 +17,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.healthbuddy.admin.AdminDashboard;
 import com.example.healthbuddy.dashboard.doctor.DashboardDoctor;
 import com.example.healthbuddy.patient.dashboard.UserDashboardActivity;
 import com.example.healthbuddy.registration.doctor.DoctorRegistrationActivity;
@@ -241,9 +242,10 @@ public class LoginActivity extends AppCompatActivity {
                 Constants.userDetails = userDetails.get(0);
                   intent = new Intent(LoginActivity.this, UserDashboardActivity.class);
             }else if(rb_Admin.isChecked()){
-                 intent = new Intent(LoginActivity.this, MainActivity.class);
+                 intent = new Intent(LoginActivity.this, AdminDashboard.class);
             }
             startActivity(intent);
+            finish();
         }else{
             Toast.makeText(LoginActivity.this, response.getResponse(), Toast.LENGTH_SHORT).show();
         }

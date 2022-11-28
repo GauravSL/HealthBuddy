@@ -33,7 +33,7 @@ public class ServerDataTransfer {
     String TAG = ServerDataTransfer.class.toString();
     private String bodyData = null;
     //private String BASE_URL= "http://192.168.29.53:8080/ServerHealthBuddy/rest/healthbuddy/";
-    private String BASE_URL= "http://192.168.29.31:8080/ServerHealthBuddy/rest/healthbuddy/";
+    private String BASE_URL= "http://192.168.213.215:8080/ServerHealthBuddy/rest/healthbuddy/";
    // private String BASE_URL= "http://192.168.213.215:8080/ServerHealthBuddy/rest/healthbuddy/";
 
 

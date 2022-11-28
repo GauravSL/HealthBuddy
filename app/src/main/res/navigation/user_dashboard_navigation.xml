@@ -33,4 +33,9 @@
         android:name="com.example.healthbuddy.patient.dashboard.ui.ordermed.OrderMedicineFragment"
         android:label="Order Medicine"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_donatemed"
+        android:name="com.example.healthbuddy.dashboard.doctor.navigation.medicine.DonateMedicineFragment"
+        android:label="Donate Medicine"
+        tools:layout="@layout/fragment_slideshow" />
 </navigation>

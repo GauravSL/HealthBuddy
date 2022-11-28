@@ -15,17 +15,11 @@ public class AdminTabAdapter extends FragmentPagerAdapter {
 
     private Context myContext;
     int totalTabs;
-    private DoctorAppointmentDetails doctorAppointmentDetails;
-    private UserAppointmentDetails userAppointmentDetails;
 
-    public AdminTabAdapter(Context context, FragmentManager fm, int totalTabs,
-                                         DoctorAppointmentDetails doctorAppointmentDetails,
-                                         UserAppointmentDetails userAppointmentDetails) {
+    public AdminTabAdapter(Context context, FragmentManager fm, int totalTabs) {
         super(fm);
         myContext = context;
         this.totalTabs = totalTabs;
-       /* this.doctorAppointmentDetails = doctorAppointmentDetails;
-        this.userAppointmentDetails = userAppointmentDetails;*/
     }
 
     // this is for fragment tabs
